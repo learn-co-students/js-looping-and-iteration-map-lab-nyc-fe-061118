@@ -16,6 +16,6 @@ You'll be writing four functions:
  * `attributesToPhrase` - function takes in array of JavaScript objects and returns a string saying "name is from hometown" for element JavaScript object in the array.  
 ## Resources
 
-- [MDN: Map]https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+- [MDN: Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
 
 <p class='util--hide'>View <a href='https://learn.co/lessons/javascript-map-lab'>Javascript Map Lab</a> on Learn.co and start learning to code for free.</p>
