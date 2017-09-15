@@ -2,46 +2,37 @@ const expect = chai.expect;
 
 describe('drivers', function() {
   describe('findMatching', function() {
-    it('returns all drivers that match the passed in name', function() {
+    it('returns all drivers lowercased', function() {
       let drivers = ['Bobby', 'Sammy', "Sally", "Annette", "Sarah", "Bobby"]
-      expect(findMatching(drivers, 'Bobby')).to.eql(["Bobby", "Bobby"])
-      expect(findMatching(drivers, 'Sammy')).to.eql(["Sammy"])
+      expect(lowerCaseDrivers(drivers)).to.eql(["bobby", "sammy", "sally", "annette", "sarah", "bobby"])
     })
 
-    it('returns matching drivers if case does not match but letters do', function() {
-      let drivers = ['Bobby', 'Sammy', "Sally", "Annette", "Sarah", "bobby"]
-      expect(findMatching(drivers, 'Bobby')).to.eql(["Bobby", "bobby"])
-    })
-
-    it('returns an empty array if there is no match', function() {
-      let drivers = ['Bobby', 'Sammy', "Sally", "Annette", "Sarah", "bobby"]
-      expect(findMatching(drivers, 'Susan')).to.eql([])
+    it('does not modify the original array', function() {
+      let drivers = ['Bobby', 'Sammy', "Sally", "Annette", "Sarah", "Bobby"]
+      lowerCaseDrivers(drivers)
+      expect(drivers).to.eql(['Bobby', 'Sammy', "Sally", "Annette", "Sarah", "Bobby"])
     })
   })
 
-  describe('fuzzyMatch', function() {
-    it('returns a driver if beginning provided letters match', function() {
-      let drivers = ['Bobby', 'Sammy', "Sally", "Annette", "Sarah", "bobby"]
-      expect(fuzzyMatch(drivers, 'Sa')).to.have.members(["Sammy", "Sarah", "Sally"])
-    })
-
-    it('does not return drivers if only middle or ending letters match', function() {
-      let drivers = ['Bobby', 'Sammy', "Sally", "Annette", "Sarah", "bobby"]
-      expect(fuzzyMatch(drivers, 'y')).to.have.members([])
-    })
-
-    it('does not return drivers if only middle or ending letters match', function() {
-      let drivers = ['Bobby', 'Sammy', "Sally", "Annette", "Sarah", "bobby"]
-      expect(fuzzyMatch(drivers, 'mm')).to.have.members([])
+  describe('nameToAttributes', function() {
+    it('returns list of objects with appropriate first and last names', function() {
+      let drivers = ['Bobby Smith', 'Sammy Watkins', "Sally Jenkins", "Annette Sawyer", "Sarah Hucklebee", "bobby ridge"]
+      expect(nameToAttributes(drivers)).to.eql([{firstName: "Bobby", lastName: "Smith"},
+      {firstName: "Sammy", lastName: "Watkins"},
+      {firstName: "Sally", lastName: "Jenkins"},
+      {firstName: "Annette", lastName: "Sawyer"},
+      {firstName: "Sarah", lastName: "Hucklebee"},
+      {firstName: "bobby", lastName: "ridge"}])
     })
   })
 
-  describe('matchName', function() {
-    it('accesses the data structure to check if name matches', function() {
+  describe('attributesToPhrase', function() {
+    it('converts to list saying the name and where each individual is from', function() {
       let drivers = [{name: 'Bobby', hometown: 'Pittsburgh'},
       {name: 'Sammy', hometown: 'New York'}, {name: "Sally", hometown: 'Cleveland'},
       {name: "Annette", hometown: "Los Angelos"}, {name: "Bobby", hometown: "Tampa Bay"}]
-      expect(matchName(drivers, 'Bobby')).to.eql([{name: 'Bobby', hometown: 'Pittsburgh'}, {name: "Bobby", hometown: "Tampa Bay"}])
+      expect(attributesToPhrase(drivers)).to.eql(["Bobby is from Pittsburgh", "Sammy is from New York", "Sally is from Cleveland",
+      "Annette is from Los Angelos", "Bobby is from Tampa Bay"])
     })
   })
 })

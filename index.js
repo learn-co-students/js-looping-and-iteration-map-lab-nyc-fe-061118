@@ -1,19 +1,19 @@
-function findMatching(list, name){
-  return list.filter(function(driverName){
-    return driverName.toLowerCase() == name.toLowerCase()
+function lowerCaseDrivers(list){
+  return list.map(function(driver){
+    return driver.toLowerCase()
   })
 }
 
-
-function fuzzyMatch(list, partialName){
-  let lengthOfName = partialName.length
-  return list.filter(function(driverName){
-    return driverName.slice(0, lengthOfName) == partialName
+function nameToAttributes(list){
+  return list.map(function(driver){
+    let driverFirst = driver.split(' ')[0]
+    let driverLast = driver.split(' ')[1]
+    return {firstName: driverFirst, lastName: driverLast }
   })
 }
 
-function matchName(list, name){
-  return list.filter(function(driver){
-    return driver.name.toLowerCase() == name.toLowerCase()
+function attributesToPhrase(drivers){
+  return drivers.map(function(driver){
+    return `${driver.name} is from ${driver.hometown}`
   })
 }
