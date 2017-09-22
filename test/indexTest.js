@@ -1,20 +1,20 @@
 const sinon = require('sinon');
 
-describe('index.js', () => {
-  describe('lowerCaseDrivers()', () => {
+describe('index.js', function() {
+  describe('lowerCaseDrivers()', function() {
     const drivers = [];
 
-    beforeEach(() => {
+    beforeEach(function() {
       drivers.length = 0;
 
       drivers.push('Bobby', 'Sammy', 'Sally', 'Annette', 'Sarah', 'Bobby');
     });
 
-    after(() => {
+    after(function() {
       Array.prototype.map.restore();
     });
 
-    it('uses the Array map method', () => {
+    it('uses the Array map method', function() {
       let spy = sinon.spy(Array.prototype, 'map');
       lowerCaseDrivers(drivers);
       expect(
@@ -23,7 +23,7 @@ describe('index.js', () => {
       ).to.equal(true);
     });
 
-    it('returns all drivers lowercased', () => {
+    it('returns all drivers lowercased', function() {
       expect(lowerCaseDrivers(drivers)).to.eql([
         'bobby',
         'sammy',
@@ -34,7 +34,7 @@ describe('index.js', () => {
       ]);
     });
 
-    it('does not modify the original array', () => {
+    it('does not modify the original array', function() {
       lowerCaseDrivers(drivers);
 
       expect(drivers).to.eql([
@@ -48,12 +48,20 @@ describe('index.js', () => {
     });
   });
 
-  describe('nameToAttributes()', () => {
-    after(() => {
+  describe('nameToAttributes()', function() {
+    const drivers = [];
+
+    beforeEach(function() {
+      drivers.length = 0;
+
+      drivers.push('Bobby', 'Sammy', 'Sally', 'Annette', 'Sarah', 'Bobby');
+    });
+
+    after(function() {
       Array.prototype.map.restore();
     });
 
-    it('uses the Array map method', () => {
+    it('uses the Array map method', function() {
       let spy = sinon.spy(Array.prototype, 'map');
       nameToAttributes(drivers);
       expect(
@@ -62,7 +70,7 @@ describe('index.js', () => {
       ).to.equal(true);
     });
 
-    it('returns list of objects with appropriate first and last names', () => {
+    it('returns list of objects with appropriate first and last names', function() {
       const drivers = [
         'Bobby Smith',
         'Sammy Watkins',
@@ -83,12 +91,20 @@ describe('index.js', () => {
     });
   });
 
-  describe('attributesToPhrase()', () => {
-    after(() => {
+  describe('attributesToPhrase()', function() {
+    const drivers = [];
+
+    beforeEach(function() {
+      drivers.length = 0;
+
+      drivers.push('Bobby', 'Sammy', 'Sally', 'Annette', 'Sarah', 'Bobby');
+    });
+
+    after(function() {
       Array.prototype.map.restore();
     });
 
-    it('uses the Array map method', () => {
+    it('uses the Array map method', function() {
       let spy = sinon.spy(Array.prototype, 'map');
       attributesToPhrase(drivers);
       expect(
@@ -97,7 +113,7 @@ describe('index.js', () => {
       ).to.equal(true);
     });
 
-    it('converts to list saying the name and where each individual is from', () => {
+    it('converts to list saying the name and where each individual is from', function() {
       const drivers = [
         { name: 'Bobby', hometown: 'Pittsburgh' },
         { name: 'Sammy', hometown: 'New York' },
