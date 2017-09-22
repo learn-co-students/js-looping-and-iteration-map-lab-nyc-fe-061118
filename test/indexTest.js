@@ -49,6 +49,14 @@ describe('index.js', function() {
   });
 
   describe('nameToAttributes()', function() {
+    const drivers = [];
+
+    beforeEach(function() {
+      drivers.length = 0;
+
+      drivers.push('Bobby', 'Sammy', 'Sally', 'Annette', 'Sarah', 'Bobby');
+    });
+
     after(function() {
       Array.prototype.map.restore();
     });
@@ -84,6 +92,14 @@ describe('index.js', function() {
   });
 
   describe('attributesToPhrase()', function() {
+    const drivers = [];
+
+    beforeEach(function() {
+      drivers.length = 0;
+
+      drivers.push('Bobby', 'Sammy', 'Sally', 'Annette', 'Sarah', 'Bobby');
+    });
+
     after(function() {
       Array.prototype.map.restore();
     });
