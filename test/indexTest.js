@@ -1,28 +1,29 @@
 const expect = chai.expect;
 
-describe('index.js', () => {
-  describe('lowerCaseDrivers()', () => {
+describe('index.js', function () {
+  describe('lowerCaseDrivers()', function () {
+    const drivers = [];
 
-    let drivers;
+    beforeEach(function () {
+      drivers.length = 0;
 
-    beforeEach(() => {
-      drivers = ['Bobby', 'Sammy', 'Sally', 'Annette', 'Sarah', 'Bobby'];
+      drivers.push('Bobby', 'Sammy', 'Sally', 'Annette', 'Sarah', 'Bobby');
     });
 
-    it('returns all drivers lowercased', () => {
+    it('returns all drivers lowercased', function () {
       expect(lowerCaseDrivers(drivers)).to.eql(['bobby', 'sammy', 'sally', 'annette', 'sarah', 'bobby']);
     });
 
-    it('does not modify the original array', () => {
+    it('does not modify the original array', function () {
       lowerCaseDrivers(drivers);
 
       expect(drivers).to.eql(['Bobby', 'Sammy', 'Sally', 'Annette', 'Sarah', 'Bobby']);
     });
   });
 
-  describe('nameToAttributes()', () => {
-    it('returns list of objects with appropriate first and last names', () => {
-      let drivers = ['Bobby Smith', 'Sammy Watkins', 'Sally Jenkins', 'Annette Sawyer', 'Sarah Hucklebee', 'bobby ridge'];
+  describe('nameToAttributes()', function () {
+    it('returns list of objects with appropriate first and last names', function () {
+      const drivers = ['Bobby Smith', 'Sammy Watkins', 'Sally Jenkins', 'Annette Sawyer', 'Sarah Hucklebee', 'bobby ridge'];
 
       expect(nameToAttributes(drivers)).to.eql([
         { firstName: 'Bobby',   lastName: 'Smith'     },
@@ -35,9 +36,9 @@ describe('index.js', () => {
     });
   });
 
-  describe('attributesToPhrase()', () => {
-    it('converts to list saying the name and where each individual is from', () => {
-      let drivers = [
+  describe('attributesToPhrase()', function () {
+    it('converts to list saying the name and where each individual is from', function () {
+      const drivers = [
         { name: 'Bobby',   hometown: 'Pittsburgh'  },
         { name: 'Sammy',   hometown: 'New York'    },
         { name: 'Sally',   hometown: 'Cleveland'   },
