@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "gem install learn-co",
-    "test": "node_modules/browser-sync/bin/browser-sync.js start --config node_modules/learn-browser/bs-config.js"
+    "test": "mocha --bail -R mocha-multi --reporter-options json=.results.json,spec=-"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,15 @@
   },
   "homepage": "https://github.com/learn-co-curriculum/js-looping-and-iteration-map-lab#readme",
   "devDependencies": {
-    "learn-browser": "^0.1.13"
+    "babel-core": "6.26.3",
+    "babel-preset-env": "1.7.0",
+    "chai": "4.1.2",
+    "chai-dom": "^1.8.0",
+    "file-system": "2.2.2",
+    "jsdom": "~9.9.0",
+    "mocha": "5.2.0",
+    "mocha-jsdom": "~1.1.0",
+    "mocha-multi": "1.0.1",
+    "sinon": "^6.3.4"
   }
 }
