@@ -1,20 +1,20 @@
 const sinon = require('sinon');
 
-describe('index.js', function() {
-  describe('lowerCaseDrivers()', function() {
+describe('index.js', () => {
+  describe('lowerCaseDrivers()', () => {
     const drivers = [];
 
-    beforeEach(function() {
+    beforeEach(() => {
       drivers.length = 0;
 
       drivers.push('Bobby', 'Sammy', 'Sally', 'Annette', 'Sarah', 'Bobby');
     });
 
-    after(function() {
+    after(() => {
       Array.prototype.map.restore();
     });
 
-    it('uses the Array map method', function() {
+    it('uses the Array map method', () => {
       let spy = sinon.spy(Array.prototype, 'map');
       lowerCaseDrivers(drivers);
       expect(
@@ -23,7 +23,7 @@ describe('index.js', function() {
       ).to.equal(true);
     });
 
-    it('returns all drivers lowercased', function() {
+    it('returns all drivers lowercased', () => {
       expect(lowerCaseDrivers(drivers)).to.eql([
         'bobby',
         'sammy',
@@ -34,7 +34,7 @@ describe('index.js', function() {
       ]);
     });
 
-    it('does not modify the original array', function() {
+    it('does not modify the original array', () => {
       lowerCaseDrivers(drivers);
 
       expect(drivers).to.eql([
@@ -48,12 +48,12 @@ describe('index.js', function() {
     });
   });
 
-  describe('nameToAttributes()', function() {
-    after(function() {
+  describe('nameToAttributes()', () => {
+    after(() => {
       Array.prototype.map.restore();
     });
 
-    it('uses the Array map method', function() {
+    it('uses the Array map method', () => {
       let spy = sinon.spy(Array.prototype, 'map');
       nameToAttributes(drivers);
       expect(
@@ -62,7 +62,7 @@ describe('index.js', function() {
       ).to.equal(true);
     });
 
-    it('returns list of objects with appropriate first and last names', function() {
+    it('returns list of objects with appropriate first and last names', () => {
       const drivers = [
         'Bobby Smith',
         'Sammy Watkins',
@@ -83,12 +83,12 @@ describe('index.js', function() {
     });
   });
 
-  describe('attributesToPhrase()', function() {
-    after(function() {
+  describe('attributesToPhrase()', () => {
+    after(() => {
       Array.prototype.map.restore();
     });
 
-    it('uses the Array map method', function() {
+    it('uses the Array map method', () => {
       let spy = sinon.spy(Array.prototype, 'map');
       attributesToPhrase(drivers);
       expect(
@@ -97,7 +97,7 @@ describe('index.js', function() {
       ).to.equal(true);
     });
 
-    it('converts to list saying the name and where each individual is from', function() {
+    it('converts to list saying the name and where each individual is from', () => {
       const drivers = [
         { name: 'Bobby', hometown: 'Pittsburgh' },
         { name: 'Sammy', hometown: 'New York' },
