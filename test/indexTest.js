@@ -97,6 +97,15 @@ describe('index.js', () => {
     });
 
     it('uses the Array map method', () => {
+      const drivers = [
+        'Bobby Smith',
+        'Sammy Watkins',
+        'Sally Jenkins',
+        'Annette Sawyer',
+        'Sarah Hucklebee',
+        'bobby ridge'
+      ];
+
       let spy = sinon.spy(Array.prototype, 'map');
       attributesToPhrase(drivers);
       expect(
